@@ -1,7 +1,7 @@
 function Header() {
   return (
-    <div>
-      <p>This is the Header</p>
+    <div className='m-4 flex'>
+      <h1>Crypto Coins</h1>
     </div>
   );
 }

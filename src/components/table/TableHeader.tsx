@@ -39,7 +39,7 @@ function TableHeader(props: TableHeaderProps) {
   ];
 
   return (
-    <TableHead>
+    <TableHead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
@@ -49,6 +49,7 @@ function TableHeader(props: TableHeaderProps) {
             sortDirection={
               ValueToOrder === headCell.id ? OrderDirection : false
             }
+            sx={{ color: 'rgb(156 163 175)' }}
           >
             <TableSortLabel
               active={ValueToOrder === headCell.id}
