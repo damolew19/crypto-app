@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# Crpyto App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
 
-## Available Scripts
+- This app is bootstrapped with create-react-app
+- run `npm start` to start the application
+- Eslint and Prettier are installed with custom configurations
 
-In the project directory, you can run:
+## Styles
 
-### `npm start`
+- To create the table, I used the table component from Material UI - as I wanted to learn how to implement components from this library
+- I also installed Tailwind CSS to speed up the styling process
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## State Management
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- I decided to use MobX for state management
+- This is a module used by the CFA, and I wanted to improve my knowledge of how to operate a data transferring system
+- Alternatively, react-hooks may be the other option
 
-### `npm test`
+## src Directory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Any custom styles are stored in `App.css`
+- utils contains utility functions across the app. Here I plan to use a transitionStates function which will fade the loading, error, and done states.
+- features directory will contain the pages of the page. This is a little unnecessary in this application as there is only one window. However, if I were to increase the size of the app, additional pages would go here.
+- components is where I store reusable UI components that will be used on pages
+- entities folder is where state managent is handled.
 
-### `npm run build`
+## TypeScript
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- I challenged myself to use TypeScript for this app. The typing language is one that I am not versed in. However, I have improved my TypeScript knowledge through building this app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Still to do
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Search bar: I plan to use the search bar from Material UI to handle the filtering. I plan to update the store that displays the table data and repopulate the table when there are no keys in the search bar.
+- Error State: I plan to put the error state component in App.tsx and will display the component. I will create an errorState variable via MobX and show when errorState is true.
+- Jest: I haven't used this library, but I plan to test the loading state, error state, and API calls.

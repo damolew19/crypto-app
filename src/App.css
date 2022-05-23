@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+.show {
+  opacity: 1;
+}
+
+/* .loading-state,
+.table-component,
+.error-state,
+.coin-component {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+} */
+
+.positive-arrow::before {
+  content: url('./up-arrow.svg');
+  height: 10px;
+  width: 10px;
+  margin-right: 2px;
+}
+
+.negative-arrow::before {
+  content: url('./down-arrow.svg');
+  height: 10px;
+  width: 10px;
+  margin-right: 4px;
+}
+
+hr {
+  border-top: 1px solid grey;
+  opacity: 0.5;
+}
+
+.text-rose-500 {
+  color: rgb(244 63 94 / var(--tw-text-opacity)) !important;
+}
+
+.text-emerald-500 {
+  color: rgb(16 185 129 / var(--tw-text-opacity)) !important;
+}

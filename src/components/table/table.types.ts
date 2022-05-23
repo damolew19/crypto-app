@@ -15,6 +15,8 @@ export interface TableHeaderProps {
   onRequestSort: (event: React.MouseEvent<unknown>, property: string) => void;
   OrderDirection: Order;
   ValueToOrder: keyof Data | string;
+  cancelSearch: any;
+  requestSearch: any;
 }
 
 export type HeadCells = {
