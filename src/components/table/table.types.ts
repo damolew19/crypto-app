@@ -20,7 +20,7 @@ export interface TableHeaderProps {
 }
 
 export type HeadCells = {
-  id: React.Key & string;
+  title: React.Key & string;
   numeric: boolean;
   disablePadding: boolean;
 };

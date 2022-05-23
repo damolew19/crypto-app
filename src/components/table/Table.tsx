@@ -31,6 +31,7 @@ const DataTable = observer(() => {
   ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+    console.log('number', rowsPerPage);
   };
 
   // const requestSearch = (searchedVal: string): any => {
@@ -50,20 +51,30 @@ const DataTable = observer(() => {
       <hr />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
-          <TableHeader
-          // requestSearch={requestSearch}
-          // cancelSearch={cancelSearch}
-          />
+          <TableHeader />
           <TableBody>
-            {store.TableData.map((row: any) => (
+            {store.TableData.slice(
+              page * rowsPerPage,
+              page * rowsPerPage + rowsPerPage,
+            ).map((row: any) => (
               <TableRow
                 key={row.name}
                 // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 className='bg-white text-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600'
               >
-                <TableCell sx={{ color: 'rgb(156 163 175)', display: 'flex' }}>
-                  <img className='mr-2 w-5 h-5' src={row.img} alt={row.name} />
-                  {row.symbol}
+                <TableCell
+                  sx={{
+                    color: 'rgb(156 163 175)',
+                  }}
+                >
+                  <div className='flex'>
+                    <img
+                      className='mr-2 w-5 h-5'
+                      src={row.img}
+                      alt={row.name}
+                    />
+                    {row.symbol}
+                  </div>
                 </TableCell>
                 <TableCell sx={{ color: 'rgb(156 163 175)' }} align='right'>
                   ${row.currentPrice}
@@ -83,7 +94,12 @@ const DataTable = observer(() => {
                   ${row.marketCap}
                 </TableCell>
                 <TableCell sx={{ color: 'rgb(156 163 175)' }} align='right'>
-                  <Link to={`coin?=${row.name}`}>See More</Link>
+                  <Link
+                    className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+                    to={`coin?=${row.name}`}
+                  >
+                    See More
+                  </Link>
                 </TableCell>
               </TableRow>
             ))}
@@ -95,7 +111,7 @@ const DataTable = observer(() => {
         component='div'
         rowsPerPage={rowsPerPage}
         page={page}
-        count={store.CoinGeckoData.length}
+        count={store.TableData.length}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
         className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'

@@ -1,35 +1,32 @@
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import React from 'react';
 import { HeadCells } from './table.types';
 
 function TableHeader() {
-  // const [searched, setSearched] = useState<string>('');
-
   const headCells: HeadCells[] = [
     {
-      id: 'Name',
+      title: 'Name',
       numeric: false,
       disablePadding: false,
     },
     {
-      id: 'Current Price',
+      title: 'Current Price',
       numeric: true,
       disablePadding: false,
     },
     {
-      id: 'Price Change 24 Hr',
+      title: 'Price Change 24 Hr',
       numeric: true,
       disablePadding: false,
     },
     {
-      id: 'Market Cap',
+      title: 'Market Cap',
       numeric: true,
       disablePadding: false,
     },
     {
-      id: '',
+      title: '',
       numeric: true,
       disablePadding: false,
     },
@@ -40,11 +37,13 @@ function TableHeader() {
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
-            key={headCell.id}
+            key={headCell.title}
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sx={{ color: 'rgb(156 163 175)' }}
-          />
+          >
+            {headCell.title}
+          </TableCell>
         ))}
       </TableRow>
     </TableHead>

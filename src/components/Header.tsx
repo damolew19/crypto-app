@@ -1,12 +1,6 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useStore } from '../entities/store';
 
 function Header() {
-  const store = useStore();
-  useEffect(() => {
-    console.log(store);
-  });
   return (
     <div className='m-4 flex'>
       <Link

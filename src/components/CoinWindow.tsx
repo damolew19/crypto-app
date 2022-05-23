@@ -27,7 +27,7 @@ function CoinWindow() {
             alt={store.coinSelected.id}
           />
           <h1 className='m-1 text-xl font-bold'>
-            {store.coinSelected.id} ({store.coinSelected.symbol})
+            {store.coinSelected.name} ({store.coinSelected.symbol})
           </h1>
         </div>
         <div className='flex items-center'>
@@ -56,7 +56,10 @@ function CoinWindow() {
               Market Cap: ${store.coinSelected.market_cap.toLocaleString()}
             </li>
             <li>
-              Max Supply: ${store.coinSelected.total_supply.toLocaleString()}
+              Total Supply:
+              {store.coinSelected.total_supply
+                ? `$${store.coinSelected.total_supply.toLocaleString()}`
+                : ' No total supply figure'}
             </li>
             <li>
               Circulating Supply: $
