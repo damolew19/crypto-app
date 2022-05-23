@@ -48,7 +48,6 @@ class Store {
 
   @action
   getCoinData = (coinName: any) => {
-    console.log('working');
     const result = this.CoinGeckoData.find(
       (index: any) => index.id === coinName,
     );
@@ -59,31 +58,34 @@ class Store {
 
   @action
   fetchProducts = async () => {
-    const response = await fetch(
-      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=100&page=1&sparkline=false',
-    );
-    const data = await response.json();
+    try {
+      const response = await fetch(
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=aud&order=market_cap_desc&per_page=100&page=1&sparkline=false',
+      );
+      const data = await response.json();
 
-    this.CoinGeckoData = data;
+      this.CoinGeckoData = data;
 
-    console.log('----', data);
-    // initialize data store
-    this.TableData = [];
-    data.forEach((item: any) => {
-      this.TableData.push({
-        symbol: item.symbol,
-        name: item.id,
-        currentPrice: item.current_price.toFixed(2).toLocaleString('en-US'),
-        priceChangePercentage24h: item.price_change_percentage_24h
-          .toFixed(2)
-          .toLocaleString('en-US'),
-        img: item.image,
-        marketCap: item.market_cap.toLocaleString('en-US'),
-        marketCapRank: item.market_cap_rank,
+      console.log('----', data);
+      // initialize data store
+      this.TableData = [];
+      data.forEach((item: any) => {
+        this.TableData.push({
+          symbol: item.symbol,
+          name: item.id,
+          currentPrice: item.current_price.toFixed(2).toLocaleString('en-US'),
+          priceChangePercentage24h: item.price_change_percentage_24h
+            .toFixed(2)
+            .toLocaleString('en-US'),
+          img: item.image,
+          marketCap: item.market_cap.toLocaleString('en-US'),
+          marketCapRank: item.market_cap_rank,
+        });
       });
-    });
-    this.state = 'done';
-    console.log('res', this.TableData);
+      this.state = 'done';
+    } catch (e) {
+      this.state = 'error';
+    }
   };
 }
 

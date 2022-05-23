@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import CoinWindow from '../components/CoinWindow';
+import ErrorState from '../components/ErrorState';
 import LoadingState from '../components/LoadingState';
 import Table from '../components/table/Table';
 import { useStore } from '../entities/store';
 import transitionStates from '../utils/transitionStates';
 
 function MainWindow() {
-  const [isFetching, setIsFetching] = useState(true);
-  // const [coinParam, setCoinParam] = useState('');
-
   const store = useStore();
+  const [isFetching, setIsFetching] = useState(store.state);
+  // const [coinParam, setCoinParam] = useState('');
 
   useEffect(() => {
     const getData = async () => {
@@ -18,7 +18,7 @@ function MainWindow() {
       if (store.state === 'done') {
         transitionStates.fadeOut('#loadingState');
         setTimeout(() => {
-          setIsFetching(false);
+          setIsFetching(store.state);
         }, 40);
         setTimeout(() => {
           transitionStates.fadeIn('#tableComponent');
@@ -30,7 +30,8 @@ function MainWindow() {
 
   return (
     <div>
-      {isFetching ? (
+      {isFetching === 'error' ? <ErrorState /> : null}
+      {isFetching === 'pending' ? (
         <LoadingState />
       ) : (
         <Routes>

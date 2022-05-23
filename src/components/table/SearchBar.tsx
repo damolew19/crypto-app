@@ -1,5 +1,4 @@
 import SearchIcon from '@mui/icons-material/Search';
-import AppBar from '@mui/material/AppBar';
 import InputBase from '@mui/material/InputBase';
 import { alpha, styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
@@ -46,23 +45,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar() {
+function SearchBar() {
   return (
-    <AppBar position='static'>
-      <Toolbar>
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder='Search…'
-            inputProps={{ 'aria-label': 'search' }}
-            onChange={(e) => {
-              console.log(e.target.value);
-            }}
-          />
-        </Search>
-      </Toolbar>
-    </AppBar>
+    <Toolbar>
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+          placeholder='Search…'
+          inputProps={{ 'aria-label': 'search' }}
+          onChange={(e) => {
+            console.log(e.target.value);
+          }}
+        />
+      </Search>
+    </Toolbar>
   );
 }
+
+export default SearchBar;
